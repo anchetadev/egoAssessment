@@ -109,18 +109,18 @@
     <div class="container" id="scores">
         <h4 class="display-4">Ego Assessment Scores</h4>
         <p>Need for External Validation</p> 
-        <p id="evSum">Sum: </p>
-        <p id="evAvg">Average: </p>
+        <p class="scoreDetail" id="evSum">Sum: </p>
+        <p class="scoreDetail" id="evAvg">Average: </p>
         <p>Social Comparison & Competition</p>
-        <p id="sccSum">Sum: </p>
-        <p id="sccAvg">Average: </p>
+        <p class="scoreDetail" id="sccSum">Sum: </p>
+        <p class="scoreDetail" id="sccAvg">Average: </p>
         <p>Self-Criticism & Insecurity</p>
-        <p id="sciSum">Sum: </p>
-        <p id="sciAvg">Average: </p>
+        <p class="scoreDetail" id="sciSum">Sum: </p>
+        <p class="scoreDetail" id="sciAvg">Average: </p>
         <p>Negative Ego-Driven Behaviors</p>
-        <p id="nedbSum">Sum: </p>
-        <p id="nedbAvg">Average: </p>
-        <p id="total">Total: </p>
+        <p class="scoreDetail" id="nedbSum">Sum: </p>
+        <p class="scoreDetail" id="nedbAvg">Average: </p>
+        <p class="scoreDetail" id="total">Total: </p>
         
     </div>
 
@@ -161,7 +161,10 @@
             total += evSum + sccSum + sciSum  + nedbSum;
             console.log(evSum, sccSum, sciSum ,nedbSum)
             console.log(total)
-            document.querySelector("#total").innerHTML += total
+            document.querySelector("#total").innerHTML += total  
+
+            let button = document.querySelector(".btn")
+            button.disabled = true;
         }
     </script>
 <!-- Bootstrap JS -->
