@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron">    
+        <h1 class="display-1">Ego Assessment</h1>
+        <p class="lead">This assessment explores different ways the ego minfests in your thoughts and behaviors. </p>
+    </div>
+    <div class="container">
+        <p>Please rate each statement on a scale of 0 to 4, where:</p>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">0 = Never True</li>
+            <li class="list-group-item">1 = Rarely True</li>
+            <li class="list-group-item">2 = Sometimes True</li>
+            <li class="list-group-item">3 = Often True</li>
+            <li class="list-group-item">4 = Always True</li>
+        </ul>
+    </div>
+    <form onsubmit="calculate()" action="#scores" class="container">
+        <div class="form-group">
+            <label for="ev1">My sense of value depends on receiving recognition or praise from others.</label>
+            <select class="form-control" id="ev1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ev2">I seek approval from others to feel  confident in myself.</label>
+            <select class="form-control" id="ev2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ev3">I try to associate with accomplished or influential people to enhance my self-worth.</label>
+            <select class="form-control" id="ev3">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="scc1">I try to associate with accomplished or influential people to enhance my self-worth.</label>
+            <select class="form-control" id="scc1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="scc2">I try to associate with accomplished or influential people to enhance my self-worth.</label>
+            <select class="form-control" id="scc2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sci1">I try to associate with accomplished or influential people to enhance my self-worth.</label>
+            <select class="form-control" id="sci1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="sci2">I try to associate with accomplished or influential people to enhance my self-worth.</label>
+            <select class="form-control" id="sci2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nedb1">I try to associate with accomplished or influential people to enhance my self-worth.</label>
+            <select class="form-control" id="nedb1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nedb2">I try to associate with accomplished or influential people to enhance my self-worth.</label>
+            <select class="form-control" id="nedb2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="container" id="scores">
+        <h4 class="display-4">Ego Assessment Scores</h4>
+        <p>Need for External Validation</p> 
+        <p id="evSum">Sum: </p>
+        <p id="evAvg">Average: </p>
+        <p>Social Comparison & Competition</p>
+        <p id="sccSum">Sum: </p>
+        <p id="sccAvg">Average: </p>
+        <p>Self-Criticism & Insecurity</p>
+        <p id="sciSum">Sum: </p>
+        <p id="sciAvg">Average: </p>
+        <p>Negative Ego-Driven Behaviors</p>
+        <p id="nedbSum">Sum: </p>
+        <p id="nedbAvg">Average: </p>
+        <p id="total">Total: </p>
+        
+    </div>
+
+
+    <script>
+        let evSum = 0;
+        let evAvg = 0;
+        let sccSum = 0;
+        let sccAvg = 0;
+        let sciSum = 0;
+        let sciAvg = 0;
+        let nedbSum = 0;
+        let nedbAvg = 0;
+        let total = 0;
+
+        function calculate(){
+            evSum = parseInt(document.querySelector("#ev1").value) + parseInt(document.querySelector("#ev2").value) + parseInt(document.querySelector("#ev3").value)
+            console.log(evSum)
+            evAvg = evSum/3
+            document.querySelector("#evSum").innerHTML += evSum
+            document.querySelector("#evAvg").innerHTML += evAvg
+
+            sccSum = parseInt(document.querySelector("#scc1").value) + parseInt(document.querySelector("#scc2").value)
+            sccAvg = sccSum/2
+            document.querySelector("#sccSum").innerHTML += sccSum
+            document.querySelector("#sccAvg").innerHTML += sccAvg
+
+            sciSum = parseInt(document.querySelector("#sci1").value) + parseInt(document.querySelector("#sci2").value)
+            sciAvg = sciSum/2
+            document.querySelector("#sciSum").innerHTML += sciSum
+            document.querySelector("#sciAvg").innerHTML += sciAvg
+
+            nedbSum = parseInt(document.querySelector("#nedb1").value) + parseInt(document.querySelector("#nedb2").value)
+            nedbAvg = nedbSum/2
+            document.querySelector("#nedbSum").innerHTML += nedbSum
+            document.querySelector("#nedbAvg").innerHTML += nedbAvg
+
+            total += evSum + sccSum + sciSum  + nedbSum;
+            console.log(evSum, sccSum, sciSum ,nedbSum)
+            console.log(total)
+            document.querySelector("#total").innerHTML += total
+        }
+    </script>
+<!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
