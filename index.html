@@ -10,7 +10,7 @@
 <body>
     <div class="jumbotron">    
         <h1 class="display-1">Ego Assessment</h1>
-        <p class="lead">This assessment explores different ways the ego minfests in your thoughts and behaviors. </p>
+        <p class="lead">This assessment explores different ways the ego manifests in your thoughts and behaviors. </p>
     </div>
     <div class="container">
         <p>Please rate each statement on a scale of 0 to 4, where:</p>
@@ -22,7 +22,7 @@
             <li class="list-group-item">4 = Always True</li>
         </ul>
     </div>
-    <form onsubmit="calculate()" action="#scores" class="container">
+    <form onsubmit="calculate(event)" action="#scores" class="container">
         <div class="form-group">
             <label for="ev1">My sense of value depends on receiving recognition or praise from others.</label>
             <select class="form-control" id="ev1">
@@ -33,7 +33,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="ev2">I seek approval from others to feel  confident in myself.</label>
+            <label for="ev2">I seek approval from others to feel confident in myself.</label>
             <select class="form-control" id="ev2">
               <option>1</option>
               <option>2</option>
@@ -124,47 +124,31 @@
         
     </div>
 
-
     <script>
-        let evSum = 0;
-        let evAvg = 0;
-        let sccSum = 0;
-        let sccAvg = 0;
-        let sciSum = 0;
-        let sciAvg = 0;
-        let nedbSum = 0;
-        let nedbAvg = 0;
-        let total = 0;
+        function calculate(event) {
+            event.preventDefault();
 
-        function calculate(){
-            evSum = parseInt(document.querySelector("#ev1").value) + parseInt(document.querySelector("#ev2").value) + parseInt(document.querySelector("#ev3").value)
-            console.log(evSum)
-            evAvg = evSum/3
-            document.querySelector("#evSum").innerHTML += evSum
-            document.querySelector("#evAvg").innerHTML += evAvg
+            const categories = {
+                ev: ['ev1', 'ev2', 'ev3'],
+                scc: ['scc1', 'scc2'],
+                sci: ['sci1', 'sci2'],
+                nedb: ['nedb1', 'nedb2']
+            };
 
-            sccSum = parseInt(document.querySelector("#scc1").value) + parseInt(document.querySelector("#scc2").value)
-            sccAvg = sccSum/2
-            document.querySelector("#sccSum").innerHTML += sccSum
-            document.querySelector("#sccAvg").innerHTML += sccAvg
+            let total = 0;
 
-            sciSum = parseInt(document.querySelector("#sci1").value) + parseInt(document.querySelector("#sci2").value)
-            sciAvg = sciSum/2
-            document.querySelector("#sciSum").innerHTML += sciSum
-            document.querySelector("#sciAvg").innerHTML += sciAvg
+            for (const [category, ids] of Object.entries(categories)) {
+                const sum = ids.reduce((acc, id) => acc + parseInt(document.getElementById(id).value), 0);
+                const avg = sum / ids.length;
+                total += sum;
 
-            nedbSum = parseInt(document.querySelector("#nedb1").value) + parseInt(document.querySelector("#nedb2").value)
-            nedbAvg = nedbSum/2
-            document.querySelector("#nedbSum").innerHTML += nedbSum
-            document.querySelector("#nedbAvg").innerHTML += nedbAvg
+                document.getElementById(`${category}Sum`).textContent = `Sum: ${sum}`;
+                document.getElementById(`${category}Avg`).textContent = `Average: ${avg.toFixed(2)}`;
+            }
 
-            total += evSum + sccSum + sciSum  + nedbSum;
-            console.log(evSum, sccSum, sciSum ,nedbSum)
-            console.log(total)
-            document.querySelector("#total").innerHTML += total  
+            document.getElementById('total').textContent = `Total: ${total}`;
 
-            let button = document.querySelector(".btn")
-            button.disabled = true;
+            document.querySelector('.btn').disabled = true;
         }
     </script>
 <!-- Bootstrap JS -->
