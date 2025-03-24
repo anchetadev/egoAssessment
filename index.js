@@ -23,3 +23,18 @@ function calculate(event) {
 
     document.querySelector('.btn').disabled = true;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("loaded")
+    
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal')) {
+        window.location.reload()
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode === 27) {
+            window.location.reload()
+        }
+    });
+  });
