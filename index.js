@@ -3,11 +3,11 @@ let interpretation = "";
 
 function interpret(total){
     if (total<=10) {
-        interpretation=`Ego rarely influences your actions. This may reflect strong self-awareness or minimal ego interference. \nReflect on whether you avoid ego-driven behaviors or if they go unnoticed. Strengthen self-awareness.`
+        interpretation=`Ego rarely influences your actions. This may reflect strong self-awareness or minimal ego interference. <br>Reflect on whether you avoid ego-driven behaviors or if they go unnoticed. Strengthen self-awareness.`
     } else if (total > 10 && total <=20) {
-        interpretation=`Ego occasionally impacts your thoughts or behaviors \nIdentify triggers for ego-driven actions and explore strategies to manage them.`
+        interpretation=`Ego occasionally impacts your thoughts or behaviors <br>Identify triggers for ego-driven actions and explore strategies to manage them.`
     }else if (total > 20 && total <=32) {
-        interpretation=`Ego plays a significant role in shaping your responses and interactions. \nFocus on building humility, reducing comparison, and strengthening intrinsic motivations.`
+        interpretation=`Ego plays a significant role in shaping your responses and interactions. <br>Focus on building humility, reducing comparison, and strengthening intrinsic motivations.`
     }
     document.getElementById("interpretation").innerHTML += interpretation
 }
