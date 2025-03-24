@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ego Assessment</title>
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
     <div class="jumbotron">    
@@ -104,53 +106,81 @@
               <option>4</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
     </form>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Assessment results</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="location.reload()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <h4 class="display-4">Ego Assessment Scores</h4>
+                <p class="card-text"><b>Please record your scores.</b> Once you click the Done button at the bottom, this page will refresh. Scores are not saved on this website.</p>
+                <div class="row justify-content-around">
+                    <div class="card col-5">
+                        <div class="card-body">
+                            <h5 class="display-5 title">Need for External Validation</h5> 
+                            <hr>
+                            <p class="scoreDetail" id="evSum">Sum: </p>
+                            <p class="scoreDetail" id="evAvg">Average: </p>
+                        </div>
+                    </div>
+                    <div class="card col-5">
+                        <div class="card-body">
+                            <h5 class="display-5 title">Social Comparison & Competition</h5>
+                            <hr>
+                            <p class="scoreDetail" id="sccSum">Sum: </p>
+                            <p class="scoreDetail" id="sccAvg">Average: </p>
+                        </div>
+                    </div>
+              </div>
+              <div class="row justify-content-around">
+                <div class="card col-5">
+                    <div class="card-body">
+                        <h5 class="display-5 title">Self-Criticism & Insecurity</h5>
+                        <hr>
+                        <p class="scoreDetail" id="sciSum">Sum: </p>
+                        <p class="scoreDetail" id="sciAvg">Average: </p>
+                    </div>
+                </div>
+                <div class="card col-5">
+                    <div class="card-body">
+                        <h5 class="display-5 title">Negative Ego-Driven Behaviors</h5>
+                        <hr>
+                        <p class="scoreDetail" id="nedbSum">Sum: </p>
+                        <p class="scoreDetail" id="nedbAvg">Average: </p>
+                    </div>
+                </div>
+              </div>
+              <div class="row justify-content-around">
+                <div class="card col-5">
+                    <div class="card-body">
+                        <h5 class="display-5 title">Total Score</h5>
+                        <hr>
+                        <p class="scoreDetail" id="total">Total: </p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" onclick="location.reload()">Done</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="container" id="scores">
-        <h4 class="display-4">Ego Assessment Scores</h4>
-        <p>Need for External Validation</p> 
-        <p class="scoreDetail" id="evSum">Sum: </p>
-        <p class="scoreDetail" id="evAvg">Average: </p>
-        <p>Social Comparison & Competition</p>
-        <p class="scoreDetail" id="sccSum">Sum: </p>
-        <p class="scoreDetail" id="sccAvg">Average: </p>
-        <p>Self-Criticism & Insecurity</p>
-        <p class="scoreDetail" id="sciSum">Sum: </p>
-        <p class="scoreDetail" id="sciAvg">Average: </p>
-        <p>Negative Ego-Driven Behaviors</p>
-        <p class="scoreDetail" id="nedbSum">Sum: </p>
-        <p class="scoreDetail" id="nedbAvg">Average: </p>
-        <p class="scoreDetail" id="total">Total: </p>
+       
+
+
+
         
     </div>
 
-    <script>
-        function calculate(event) {
-            event.preventDefault();
-
-            const categories = {
-                ev: ['ev1', 'ev2', 'ev3'],
-                scc: ['scc1', 'scc2'],
-                sci: ['sci1', 'sci2'],
-                nedb: ['nedb1', 'nedb2']
-            };
-
-            let total = 0;
-
-            for (const [category, ids] of Object.entries(categories)) {
-                const sum = ids.reduce((acc, id) => acc + parseInt(document.getElementById(id).value), 0);
-                const avg = sum / ids.length;
-                total += sum;
-
-                document.getElementById(`${category}Sum`).textContent = `Sum: ${sum}`;
-                document.getElementById(`${category}Avg`).textContent = `Average: ${avg.toFixed(2)}`;
-            }
-
-            document.getElementById('total').textContent = `Total: ${total}`;
-
-            document.querySelector('.btn').disabled = true;
-        }
-    </script>
+    <script src="./index.js"></script>
 <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
