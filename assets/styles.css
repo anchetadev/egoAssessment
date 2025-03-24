@@ -5,6 +5,15 @@
 body{
     font-family: "Lato"
 }
+.jumbotron {
+    color: #75d19e;
+    background-color: #050a1a;
+}
+.btn {
+    background-color: #75d19e;
+    color: #050a1a;
+}
+
 .row {
     margin-bottom: 10px;
 }
@@ -14,4 +23,28 @@ body{
 
 .modal-body h4{
     margin-bottom: 25px;
+}
+
+
+@media (max-width: 767px) {
+    .display-1{
+        font-size: 2.5rem;
+    }
+    .lead {
+        font-size: 1rem;
+    }
+    .display-4{
+        font-size: 2rem;
+    }
+    .display-5{
+        font-size: 0.8rem;
+        font-weight: bold;
+    }
+    .card-body{
+        padding: 0.5rem;
+    }
+    .card-body p {
+        font-size: 0.8rem;
+    }
+
 }
