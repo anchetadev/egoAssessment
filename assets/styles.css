@@ -10,6 +10,15 @@ body{
     color: #75d19e;
     background-color: #050a1a;
 }
+#logo {
+    width: 150px;
+    padding-right: 25px;
+}
+.jumbotron img {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+}
 .btn {
     background-color: #75d19e;
     color: #050a1a;
@@ -57,6 +66,22 @@ body{
 
 }
 @media (max-width: 991px) {
+    .jumbotron{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .jumbotron img {
+        max-width: 75px;
+        float: right;
+    }
+    #header {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    #logo {
+        width: 100%;
+        align-items: end;
+    }
     .display-4{
         font-size: 2.5rem;
     }
