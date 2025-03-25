@@ -10,6 +10,9 @@ body{
     color: #75d19e;
     background-color: #050a1a;
 }
+.lead {
+    color: white;
+}
 #logo {
     width: 150px;
     padding-right: 25px;
